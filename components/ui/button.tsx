@@ -1,4 +1,5 @@
 import * as React from "react"
+import Link from "next/link"
 import { VariantProps, cva } from "class-variance-authority"
 
 import { cn } from "@/lib/utils"
@@ -21,29 +22,53 @@ const buttonVariants = cva(
         link: "bg-transparent underline-offset-4 hover:underline text-slate-900 dark:text-slate-100 hover:bg-transparent dark:hover:bg-transparent",
       },
       size: {
-        default: "h-10 py-2 px-4",
-        sm: "h-9 px-2 rounded-md",
-        lg: "h-11 px-8 rounded-md",
+        default: "h-10 py-2 px-4 text-base",
+        sm: "h-9 px-2 rounded-md text-sm",
+        lg: "h-11 px-8 rounded-md text-lg",
+      },
+      fullWidth: {
+        true: "w-full",
+      },
+      pill: {
+        true: "rounded-full",
       },
     },
     defaultVariants: {
       variant: "default",
       size: "default",
+      fullWidth: false,
+      pill: false,
     },
   }
 )
 
 export interface ButtonProps
   extends React.ButtonHTMLAttributes<HTMLButtonElement>,
-    VariantProps<typeof buttonVariants> {}
+    VariantProps<typeof buttonVariants> {
+  disabled?: boolean
+}
 
 const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
-  ({ className, variant, size, ...props }, ref) => {
+  ({ className, variant, size, fullWidth, pill, disabled, ...props }, ref) => {
+    if (props.href) {
+      return (
+        <Link
+          className={cn(
+            buttonVariants({ variant, size, className, fullWidth, pill })
+          )}
+          {...props}
+        />
+      )
+    }
     return (
       <button
-        className={cn(buttonVariants({ variant, size, className }))}
+        type="button"
+        className={cn(
+          buttonVariants({ variant, size, className, fullWidth, pill })
+        )}
         ref={ref}
         {...props}
+        disabled={disabled}
       />
     )
   }

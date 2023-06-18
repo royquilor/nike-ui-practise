@@ -4,6 +4,7 @@ interface SiteConfig {
   name: string
   description: string
   mainNav: NavItem[]
+  featuredLinks: NavItem[]
   links: {
     twitter: string
     github: string
@@ -12,12 +13,54 @@ interface SiteConfig {
 }
 
 export const siteConfig: SiteConfig = {
-  name: "Next.js",
+  name: "Nike",
   description:
     "Beautifully designed components built with Radix UI and Tailwind CSS.",
+  featuredLinks: [
+    {
+      title: "New & Featured",
+      href: "/",
+    },
+    {
+      title: "Men",
+      href: "/",
+    },
+    {
+      title: "Women",
+      href: "/",
+    },
+    {
+      title: "Kids",
+      href: "/",
+    },
+    {
+      title: "Sale",
+      href: "/",
+    },
+  ],
   mainNav: [
     {
-      title: "Home",
+      title: "Shop all new arrivals",
+      href: "/",
+    },
+    {
+      title: "New shoes",
+      href: "/",
+    },
+    {
+      title: "New clothing",
+      href: "/",
+    },
+    {
+      title: "SNKRS launch calendar",
+      href: "/",
+    },
+    {
+      title: "Valentine's day gifts",
+      href: "/",
+    },
+    {
+      title: "Bestsellers",
       href: "/",
     },
   ],

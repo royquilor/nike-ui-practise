@@ -1,4 +1,20 @@
-# next-template
+# Nike UI practise
+
+I wanted to recreate the UI of the Nike ecommerce store for fun and to learn about
+
+- shadcn/ui
+- Next js
+- Radix ui
+
+The UI is not complete.
+
+## Goals
+
+- Framer motion
+- Carousel
+- Shrinking sticky header framer motion
+
+## next-template
 
 A Next.js 13 template for building apps with Radix UI and Tailwind CSS.
 

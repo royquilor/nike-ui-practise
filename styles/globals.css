@@ -1,3 +1,33 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer components {
+  .search-open .search-box {
+    position: absolute;
+    left: 0;
+    width: 100%;
+    background: #fff;
+    transform: none;
+    transition: all 0.1s;
+    position: fixed;
+  }
+
+  .search-open .search-box {
+    @apply top-0 h-80;
+  }
+
+  .search-open .search-input {
+    transition: width 0.25s ease, transform 0.25s ease;
+    position: relative;
+    left: 50%;
+    transform: translate(-50%);
+    margin: 12px 0 0;
+    @apply max-w-2xl;
+  }
+
+  /* .navigation-menu-content::before {
+    content: "";
+    @apply overflow-hidden fixed inset-0 backdrop-blur-md transition-all;
+  } */
+}
