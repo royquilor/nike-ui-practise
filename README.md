@@ -1,3 +1,5 @@
+https://github.com/royquilor/nike-ui-practise/assets/2366186/5b0d329e-14e0-467b-8284-ac82dce9d657
+
 # Nike UI practise
 
 I wanted to recreate the UI of the Nike ecommerce store for fun and to learn about
