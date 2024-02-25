@@ -42,37 +42,46 @@ const buttonVariants = cva(
   }
 )
 
-export interface ButtonProps
-  extends React.ButtonHTMLAttributes<HTMLButtonElement>,
-    VariantProps<typeof buttonVariants> {
-  disabled?: boolean
+// Define a more specific type for ButtonProps
+type CommonProps = Omit<React.AnchorHTMLAttributes<HTMLAnchorElement> & React.ButtonHTMLAttributes<HTMLButtonElement>, 'href'>;
+
+interface ButtonProps extends CommonProps, VariantProps<typeof buttonVariants> {
+  disabled?: boolean;
+  href?: string;
 }
 
-const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
-  ({ className, variant, size, fullWidth, pill, disabled, ...props }, ref) => {
-    if (props.href) {
+const Button = React.forwardRef<HTMLButtonElement & HTMLAnchorElement, ButtonProps>(
+  ({ className, variant, size, fullWidth, pill, disabled, href, ...props }, ref) => {
+    // Check if href is provided, render as a Link
+    if (href) {
       return (
-        <Link
-          className={cn(
-            buttonVariants({ variant, size, className, fullWidth, pill })
-          )}
-          {...props}
-        />
-      )
+        <Link href={href}>
+          <a
+            className={cn(buttonVariants({ variant, size, className, fullWidth, pill }))}
+            ref={ref as React.Ref<HTMLAnchorElement>}
+            {...props}
+          >
+            {props.children}
+          </a>
+        </Link>
+      );
     }
+
+    // Otherwise, render as a button
     return (
       <button
         type="button"
-        className={cn(
-          buttonVariants({ variant, size, className, fullWidth, pill })
-        )}
-        ref={ref}
-        {...props}
+        className={cn(buttonVariants({ variant, size, className, fullWidth, pill }))}
+        ref={ref as React.Ref<HTMLButtonElement>}
         disabled={disabled}
-      />
-    )
+        {...props}
+      >
+        {props.children}
+      </button>
+    );
   }
-)
-Button.displayName = "Button"
+);
 
-export { Button, buttonVariants }
+Button.displayName = "Button";
+
+export { Button, buttonVariants };

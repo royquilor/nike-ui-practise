@@ -84,39 +84,39 @@ export default function IndexPage() {
       <ScrollArea className="py-4 lg:hidden">
         <ScrollBar orientation="horizontal"></ScrollBar>
         <div className="flex [&>a:last-child]:pr-6">
-          {trendingLinks.map((trendingLink) => (
+          {trendingLinks.map((trendingLink, index) => (
             <Link
-              key={trendingLink.title}
+              key={index}
               title={trendingLink.title}
               href={trendingLink.href}
-              className="text-base whitespace-nowrap pl-6 text-slate-800 dark:text-slate-100 hover:text-slate-900 hover:dark:text-slate-50 font-medium capitalize"
+              className="whitespace-nowrap pl-6 text-base font-medium capitalize text-slate-800 hover:text-slate-900 dark:text-slate-100 hover:dark:text-slate-50"
             >
               {trendingLink.title}
             </Link>
           ))}
         </div>
       </ScrollArea>
-      <div className="bg-white dark:bg-slate-900 flex items-end justify-between px-6 lg:px-10 py-5 sticky top-0 z-10 dark:border-b-slate-700 transition-all">
+      <div className="sticky top-0 z-10 flex items-end justify-between bg-white px-6 py-5 transition-all dark:border-b-slate-700 dark:bg-slate-900 lg:px-10">
         <h2
-          className={`flex gap-x-1 font-semibold text-sm lg:text-2xl lg:tracking-tight  text-left transition-transform origin-left ${
+          className={`flex origin-left gap-x-1 text-left text-sm font-semibold  transition-transform lg:text-2xl lg:tracking-tight ${
             small ? "scale-75" : "scale-100"
           }`}
         >
-          <span class="hidden lg:flex">New Clothing & Gear</span>
-          <span class="lg:hidden">Results</span> (800)
+          <span className="hidden lg:flex">New Clothing & Gear</span>
+          <span className="lg:hidden">Results</span> (800)
         </h2>
 
         <div className="flex gap-x-10">
           <button className="text-sm font-medium" onClick={handleDisplay}>
             {marginLeft ? "Hide" : "Show"} Filters
           </button>
-          <button className="hidden lg:flex text-sm font-medium">
+          <button className="hidden text-sm font-medium lg:flex">
             Sort By
           </button>
         </div>
       </div>
 
-      <section className="flex relativex">
+      <section className="flex">
         <aside
           className="w-80 pl-10 transition-all "
           // style={{ display: display ? "block" : "none" }}
@@ -126,13 +126,13 @@ export default function IndexPage() {
           <div className="sticky top-24">
             <ScrollArea className="h-[220px] overflow-hidden">
               <ScrollBar orientation="vertical"></ScrollBar>
-              <div className="flex flex-col gap-y-3 mb-10">
-                {trendingLinks.map((trendingLink) => (
+              <div className="mb-10 flex flex-col gap-y-3">
+                {trendingLinks.map((trendingLink, index) => (
                   <Link
-                    key={trendingLink.title}
+                    key={index}
                     title={trendingLink.title}
                     href={trendingLink.href}
-                    className="text-base whitespace-nowrap text-slate-800 dark:text-slate-100 hover:text-slate-900 hover:dark:text-slate-50 font-medium capitalize"
+                    className="whitespace-nowrap text-base font-medium capitalize text-slate-800 hover:text-slate-900 dark:text-slate-100 hover:dark:text-slate-50"
                   >
                     {trendingLink.title}
                   </Link>
@@ -208,8 +208,8 @@ export default function IndexPage() {
                 <AccordionTrigger>Brand</AccordionTrigger>
                 <AccordionContent>
                   <div className="flex flex-col gap-y-2">
-                    {brands.map((brand) => (
-                      <div key={brand} className="flex items-center space-x-2">
+                    {brands.map((brand, index) => (
+                      <div key={index} className="flex items-center space-x-2">
                         <Checkbox id={brand} />
                         <Label htmlFor={brand}>{brand}</Label>
                       </div>
@@ -217,9 +217,9 @@ export default function IndexPage() {
                     <Collapsible>
                       <CollapsibleContent>
                         <div className="flex flex-col gap-y-2">
-                          {brandsMore.map((brandMore) => (
+                          {brandsMore.map((brandMore, index) => (
                             <div
-                              key={brandMore}
+                              key={index}
                               className="flex items-center space-x-2"
                             >
                               <Checkbox id={brandMore} />
@@ -242,8 +242,8 @@ export default function IndexPage() {
         </aside>
 
         <MotionConfig transition={{ duration: 0.3, ease: "circOut" }}>
-          <div className="w-full grid grid-cols-2 lg:grid-cols-3 gap-x-5 gap-y-20 transition-all ease-in-out lg:px-10">
-            <ProductCard title="Nike DRI-FIT" description="Hoody" price="59.95">
+          <div className="grid w-full grid-cols-2 gap-x-5 gap-y-20 transition-all ease-in-out lg:grid-cols-3 lg:px-10">
+            <ProductCard index="1" title="Nike DRI-FIT" description="Hoody" price="59.95">
               <Image src={Image2} alt="" />
             </ProductCard>
             <Link
@@ -251,18 +251,18 @@ export default function IndexPage() {
               onMouseLeave={() => setIsShown(false)}
               scroll={false}
               href="/"
-              className="flex relative overflow-hidden"
+              className="relative flex overflow-hidden"
             >
               <motion.div
                 animate={{ x: `-${index * 100}vw` }}
-                className="flex relative xflex-1 xbg-red-200 xw-full"
+                className="relative flex"
               >
-                {images.map((image) => (
+                {images.map((image, index) => (
                   <div className="relative w-screen  ">
                     <Image
-                      key={image}
+                      key={index}
                       src={image}
-                      className="xaspect-2/3 object-contain object-left-top x!relative w-full xh-[40rem]"
+                      className="w-full object-contain object-left-top"
                       fill
                       alt=""
                     />
@@ -272,7 +272,7 @@ export default function IndexPage() {
 
               {index > 0 && (
                 <Button
-                  className="absolute left-0 opacity-0 top-1/2 flex items-center justify-center"
+                  className="absolute left-0 top-1/2 flex items-center justify-center opacity-0"
                   variant="ghost"
                   onClick={() => setIndex(index - 1)}
                 >
@@ -282,7 +282,7 @@ export default function IndexPage() {
 
               {index + 1 < images.length && (
                 <Button
-                  className="absolute right-0 opacity-0 top-1/2 flex items-center justify-center"
+                  className="absolute right-0 top-1/2 flex items-center justify-center opacity-0"
                   variant="ghost"
                   onClick={() => setIndex(index + 1)}
                 >
@@ -297,7 +297,7 @@ export default function IndexPage() {
                   exit={{ opacity: 0 }}
                   className="absolute bottom-10 mt-4"
                 >
-                  <div className="flex gap-x-2 h-16 relative z-50">
+                  <div className="relative z-50 flex h-16 gap-x-2">
                     {images.map((image, i) => (
                       <motion.button
                         onMouseEnter={() => setIndex(i)}
@@ -306,11 +306,11 @@ export default function IndexPage() {
                         }}
                         transition={{ duration: 0.1 }}
                         className="shrink-0"
-                        key={image}
+                        key={i}
                       >
                         <Image
                           src={image}
-                          className="aspect-[2/3] object-cover object-left-top !relative w-full"
+                          className="!relative aspect-[2/3] w-full object-cover object-left-top"
                           fill
                           alt=""
                         />
@@ -321,18 +321,19 @@ export default function IndexPage() {
               )}
 
               {!isShown && (
-                <div className="absolute bottom-0 z-10 w-full h-28 pt-4 px-3 lg:px-0">
-                  <h2 className="font-semibold">Nike Blazer Mid '77 Vintage</h2>
-                  <p>Men's Shoes</p>
+                <div className="absolute bottom-0 z-10 h-28 w-full px-3 pt-4 lg:px-0">
+                  <h2 className="font-semibold">Nike Blazer Mid &apos;77 Vintage</h2>
+                  <p>Men&apos;s Shoes</p>
                 </div>
               )}
-              <p className="mt-2 absolute bottom-0 z-10 font-semibold px-3 lg:px-0">
+              <p className="absolute bottom-0 z-10 mt-2 px-3 font-semibold lg:px-0">
                 £99.95
               </p>
 
-              <div className="bg-white dark:bg-slate-900 absolute bottom-0 h-28 w-full"></div>
+              <div className="absolute bottom-0 h-28 w-full bg-white dark:bg-slate-900"></div>
             </Link>
             <ProductCard
+            index="2"
               title="Retro Comfort"
               description="Fleece"
               price="59.95"
@@ -340,6 +341,7 @@ export default function IndexPage() {
               <Image src={Image3} alt="" />
             </ProductCard>
             <ProductCard
+            index="3"
               title="Nike Swoosh"
               description="Women's Pad Sports Bra"
               price="39.95"
@@ -347,6 +349,7 @@ export default function IndexPage() {
               <Image src={Image5} alt="" />
             </ProductCard>
             <ProductCard
+            index="4"
               title="Nike DRI-FIT Miler"
               description="Men's Running Top"
               price="27.95"
@@ -354,19 +357,20 @@ export default function IndexPage() {
               <Image src={Image6} alt="" />
             </ProductCard>
             <ProductCard
+            index="4"
               title="Nike DRI-FIT"
               description="Men's Training Tee"
               price="27.95"
             >
               <Image src={Image7} alt="" />
             </ProductCard>
-            <ProductCard title="Nike DRI-FIT" description="Hoody" price="69.95">
+            <ProductCard index="5" title="Nike DRI-FIT" description="Hoody" price="69.95">
               <Image src={Image8} alt="" />
             </ProductCard>
-            <ProductCard title="Nike DRI-FIT" description="Hoody" price="49.95">
+            <ProductCard index="6" title="Nike DRI-FIT" description="Hoody" price="49.95">
               <Image src={Image9} alt="" />
             </ProductCard>
-            <ProductCard title="Nike DRI-FIT" description="Hoody" price="59.95">
+            <ProductCard index="7" title="Nike DRI-FIT" description="Hoody" price="59.95">
               <Image src={Image4} alt="" />
             </ProductCard>
           </div>

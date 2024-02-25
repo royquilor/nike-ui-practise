@@ -286,13 +286,13 @@ export function MainNav({ items }: MainNavProps) {
   return (
     <>
       <header
-        className={`flex w-full gap-6 md:gap-10 z-20 ${
+        className={`z-20 flex w-full gap-6 md:gap-10 ${
           isActive ? "search-open" : ""
         }`}
       >
         <Link
           href="/"
-          className={`flex lg:flex-1 items-center space-x-2 relative z-20 ${
+          className={`relative z-20 flex items-center space-x-2 lg:flex-1 ${
             isActive ? "fixed top-0 z-50" : ""
           }`}
         >
@@ -305,63 +305,63 @@ export function MainNav({ items }: MainNavProps) {
               <NavigationMenuItem>
                 <NavigationMenuTrigger>New & Featured</NavigationMenuTrigger>
                 <NavigationMenuContent className="navigation-menu-content">
-                  <div className="dark:bg-slate-900 w-full relative z-10">
-                    <div className="grid gap-3 p-6 pb-10 md:grid-cols-4 max-w-5xl mx-auto">
+                  <div className="relative z-10 w-full dark:bg-slate-900">
+                    <div className="mx-auto grid max-w-5xl gap-3 p-6 pb-10 md:grid-cols-4">
                       <div className="flex flex-col gap-y-2">
-                        <h3 className="text-base font-medium mb-2 capitalize">
+                        <h3 className="mb-2 text-base font-medium capitalize">
                           Featured
                         </h3>
-                        {items.map((item) => (
+                        {items.map((item, index) => (
                           <Link
-                            key={item.title}
+                            key={index}
                             title={item.title}
                             href={item.href}
-                            className="text-sm text-slate-500 dark:text-slate-400 hover:text-slate-900 hover:dark:text-slate-50 font-medium capitalize"
+                            className="text-sm font-medium capitalize text-slate-500 hover:text-slate-900 dark:text-slate-400 hover:dark:text-slate-50"
                           >
                             {item.title}
                           </Link>
                         ))}
                       </div>
                       <div className="flex flex-col gap-y-2">
-                        <h3 className="text-base font-medium mb-2 capitalize">
+                        <h3 className="mb-2 text-base font-medium capitalize">
                           Shop icons
                         </h3>
-                        {shopIconsLinks.map((shopIconsLink) => (
+                        {shopIconsLinks.map((shopIconsLink, index) => (
                           <Link
-                            key={shopIconsLink.title}
+                            key={index}
                             title={shopIconsLink.title}
                             href={shopIconsLink.href}
-                            className="text-sm text-slate-500 dark:text-slate-400 hover:text-slate-900 hover:dark:text-slate-50 font-medium capitalize"
+                            className="text-sm font-medium capitalize text-slate-500 hover:text-slate-900 dark:text-slate-400 hover:dark:text-slate-50"
                           >
                             {shopIconsLink.title}
                           </Link>
                         ))}
                       </div>
                       <div className="flex flex-col gap-y-2">
-                        <h3 className="text-base font-medium mb-2 capitalize">
+                        <h3 className="mb-2 text-base font-medium capitalize">
                           Best reads
                         </h3>
-                        {bestReadsLinks.map((bestReadsLink) => (
+                        {bestReadsLinks.map((bestReadsLink, index) => (
                           <Link
-                            key={bestReadsLink.title}
+                            key={index}
                             title={bestReadsLink.title}
                             href={bestReadsLink.href}
-                            className="text-sm text-slate-500 dark:text-slate-400 hover:text-slate-900 hover:dark:text-slate-50 font-medium capitalize"
+                            className="text-sm font-medium capitalize text-slate-500 hover:text-slate-900 dark:text-slate-400 hover:dark:text-slate-50"
                           >
                             {bestReadsLink.title}
                           </Link>
                         ))}
                       </div>
                       <div className="flex flex-col gap-y-2">
-                        <h3 className="text-base font-medium mb-2 capitalize">
+                        <h3 className="mb-2 text-base font-medium capitalize">
                           Nike Stories
                         </h3>
-                        {nikeStoriesLinks.map((nikeStoriesLink) => (
+                        {nikeStoriesLinks.map((nikeStoriesLink, index) => (
                           <Link
-                            key={nikeStoriesLink.title}
+                            key={index}
                             title={nikeStoriesLink.title}
                             href={nikeStoriesLink.href}
-                            className="text-sm text-slate-500 dark:text-slate-400 hover:text-slate-900 hover:dark:text-slate-50 font-medium capitalize"
+                            className="text-sm font-medium capitalize text-slate-500 hover:text-slate-900 dark:text-slate-400 hover:dark:text-slate-50"
                           >
                             {nikeStoriesLink.title}
                           </Link>
@@ -374,79 +374,81 @@ export function MainNav({ items }: MainNavProps) {
               <NavigationMenuItem>
                 <NavigationMenuTrigger>Men</NavigationMenuTrigger>
                 <NavigationMenuContent>
-                  <div className="dark:bg-slate-900 w-full relative z-10">
-                    <div className="grid gap-3 p-6 pb-10 md:grid-cols-5 max-w-7xl mx-auto">
+                  <div className="relative z-10 w-full dark:bg-slate-900">
+                    <div className="mx-auto grid max-w-7xl gap-3 p-6 pb-10 md:grid-cols-5">
                       <div className="flex flex-col gap-y-2">
-                        <h3 className="text-base font-medium mb-2 capitalize">
+                        <h3 className="mb-2 text-base font-medium capitalize">
                           Featured
                         </h3>
-                        {menFeaturedLinks.map((menFeaturedLink) => (
+                        {menFeaturedLinks.map((menFeaturedLink, index) => (
                           <Link
-                            key={menFeaturedLink.title}
+                            key={index}
                             title={menFeaturedLink.title}
                             href={menFeaturedLink.href}
-                            className="text-sm text-slate-500 dark:text-slate-400 hover:text-slate-900 hover:dark:text-slate-50 font-medium capitalize"
+                            className="text-sm font-medium capitalize text-slate-500 hover:text-slate-900 dark:text-slate-400 hover:dark:text-slate-50"
                           >
                             {menFeaturedLink.title}
                           </Link>
                         ))}
                       </div>
                       <div className="flex flex-col gap-y-2">
-                        <h3 className="text-base font-medium mb-2 capitalize">
+                        <h3 className="mb-2 text-base font-medium capitalize">
                           Shoes
                         </h3>
-                        {menShoesLinks.map((menShoesLink) => (
+                        {menShoesLinks.map((menShoesLink, index) => (
                           <Link
-                            key={menShoesLink.title}
+                            key={index}
                             title={menShoesLink.title}
                             href={menShoesLink.href}
-                            className="text-sm text-slate-500 dark:text-slate-400 hover:text-slate-900 hover:dark:text-slate-50 font-medium capitalize"
+                            className="text-sm font-medium capitalize text-slate-500 hover:text-slate-900 dark:text-slate-400 hover:dark:text-slate-50"
                           >
                             {menShoesLink.title}
                           </Link>
                         ))}
                       </div>
                       <div className="flex flex-col gap-y-2">
-                        <h3 className="text-base font-medium mb-2 capitalize">
+                        <h3 className="mb-2 text-base font-medium capitalize">
                           Shop By Sport
                         </h3>
-                        {menShopBySportLinks.map((menShopBySportLink) => (
-                          <Link
-                            key={menShopBySportLink.title}
-                            title={menShopBySportLink.title}
-                            href={menShopBySportLink.href}
-                            className="text-sm text-slate-500 dark:text-slate-400 hover:text-slate-900 hover:dark:text-slate-50 font-medium capitalize"
-                          >
-                            {menShopBySportLink.title}
-                          </Link>
-                        ))}
+                        {menShopBySportLinks.map(
+                          (menShopBySportLink, index) => (
+                            <Link
+                              key={index}
+                              title={menShopBySportLink.title}
+                              href={menShopBySportLink.href}
+                              className="text-sm font-medium capitalize text-slate-500 hover:text-slate-900 dark:text-slate-400 hover:dark:text-slate-50"
+                            >
+                              {menShopBySportLink.title}
+                            </Link>
+                          )
+                        )}
                       </div>
                       <div className="flex flex-col gap-y-2">
-                        <h3 className="text-base font-medium mb-2 capitalize">
+                        <h3 className="mb-2 text-base font-medium capitalize">
                           Nike Stories
                         </h3>
-                        {nikeStoriesLinks.map((nikeStoriesLink) => (
+                        {nikeStoriesLinks.map((nikeStoriesLink, index) => (
                           <Link
-                            key={nikeStoriesLink.title}
+                            key={index}
                             title={nikeStoriesLink.title}
                             href={nikeStoriesLink.href}
-                            className="text-sm text-slate-500 dark:text-slate-400 hover:text-slate-900 hover:dark:text-slate-50 font-medium capitalize"
+                            className="text-sm font-medium capitalize text-slate-500 hover:text-slate-900 dark:text-slate-400 hover:dark:text-slate-50"
                           >
                             {nikeStoriesLink.title}
                           </Link>
                         ))}
                       </div>
                       <div className="flex flex-col gap-y-2">
-                        <h3 className="text-base font-medium mb-2 capitalize">
+                        <h3 className="mb-2 text-base font-medium capitalize">
                           Accessories and Equipment
                         </h3>
                         {menAccessoriesEquipmentLinks.map(
-                          (menAccessoriesEquipmentLink) => (
+                          (menAccessoriesEquipmentLink, index) => (
                             <Link
-                              key={menAccessoriesEquipmentLink.title}
+                              key={index}
                               title={menAccessoriesEquipmentLink.title}
                               href={menAccessoriesEquipmentLink.href}
-                              className="text-sm text-slate-500 dark:text-slate-400 hover:text-slate-900 hover:dark:text-slate-50 font-medium capitalize"
+                              className="text-sm font-medium capitalize text-slate-500 hover:text-slate-900 dark:text-slate-400 hover:dark:text-slate-50"
                             >
                               {menAccessoriesEquipmentLink.title}
                             </Link>
@@ -473,24 +475,24 @@ export function MainNav({ items }: MainNavProps) {
           </NavigationMenu>
         </div>
 
-        <div className="flex flex-1 items-center justify-end space-x-4 relative z-20">
-          <div className="search-box w-full lg:w-auto dark:bg-gray-900">
+        <div className="relative z-20 flex flex-1 items-center justify-end space-x-4">
+          <div className="search-box w-full dark:bg-gray-900 lg:w-auto">
             <div className="search-input flex items-center space-x-1">
               <Input
-                className="rounded-full text-base bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 border-0 placeholder:text-gray-400 hover:placeholder:text-gray-800 placeholder:text-base font-medium px-5 focus:ring-white"
+                className="rounded-full border-0 bg-gray-100 px-5 text-base font-medium placeholder:text-base placeholder:text-gray-400 hover:bg-gray-200 hover:placeholder:text-gray-800 focus:ring-white dark:bg-gray-800"
                 placeholder="Search"
                 onClick={handleToggle}
               />
             </div>
             <div
-              className={`mx-auto max-w-2xl mt-10 ${
+              className={`mx-auto mt-10 max-w-2xl ${
                 isActive ? "z-10" : "hidden"
               }`}
             >
-              <h3 className="text-base font-medium text-slate-500 mb-4">
+              <h3 className="mb-4 text-base font-medium text-slate-500">
                 Popular Search Terms
               </h3>
-              <ul className="text-xl font-medium flex flex-col gap-y-2">
+              <ul className="flex flex-col gap-y-2 text-xl font-medium">
                 <li>Air Force 1</li>
                 <li>Jordan</li>
                 <li>Air Max</li>
@@ -503,7 +505,7 @@ export function MainNav({ items }: MainNavProps) {
             variant="ghost"
             onClick={handleToggle}
             className={`text-base font-medium ${
-              isActive ? "z-10 fixed" : "hidden"
+              isActive ? "fixed z-10" : "hidden"
             }`}
           >
             Cancel
@@ -518,13 +520,13 @@ export function MainNav({ items }: MainNavProps) {
               <DialogDescription>
                 <div className="flex flex-col gap-y-10 p-3">
                   <div className="flex flex-col gap-y-4">
-                    {siteConfig.featuredLinks.map((featuredLink) => (
+                    {siteConfig.featuredLinks.map((featuredLink, index) => (
                       <div className="">
                         <Link
-                          key={featuredLink.title}
+                          key={index}
                           title={featuredLink.title}
                           href={featuredLink.href}
-                          className="text-2xl text-slate-500 dark:text-slate-400 hover:text-slate-900 hover:dark:text-slate-50 font-medium capitalize"
+                          className="text-2xl font-medium capitalize text-slate-500 hover:text-slate-900 dark:text-slate-400 hover:dark:text-slate-50"
                         >
                           {featuredLink.title}
                         </Link>
@@ -554,7 +556,7 @@ export function MainNav({ items }: MainNavProps) {
         </div>
       </header>
       <div
-        className={`overflow-hidden fixed inset-0 z-10 background-white backdrop-blur-md transition-all ${
+        className={`background-white fixed inset-0 z-10 overflow-hidden backdrop-blur-md transition-all ${
           isActive ? "visible" : "invisible"
         }`}
       ></div>
@@ -578,7 +580,7 @@ const ListItem = React.forwardRef<
           {...props}
         >
           <div className="text-sm font-medium leading-none">{title}</div>
-          <p className="text-sm leading-snug text-slate-500 line-clamp-2 dark:text-slate-400">
+          <p className="line-clamp-2 text-sm leading-snug text-slate-500 dark:text-slate-400">
             {children}
           </p>
         </a>

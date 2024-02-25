@@ -16,9 +16,6 @@ export default function Buttons() {
             </Button>
             <Button variant="destructive">Destructive</Button>
             <Button variant="outline">Outline</Button>
-            <Button variant="outline" fullWidth="true">
-              Outline
-            </Button>
             <Button variant="subtle">Subtle</Button>
             <Button variant="ghost">Ghost</Button>
             <Button href="/" variant="link">
@@ -40,9 +37,6 @@ export default function Buttons() {
               Destructive
             </Button>
             <Button variant="outline" size="sm">
-              Outline
-            </Button>
-            <Button variant="outline" fullWidth="true" size="sm">
               Outline
             </Button>
             <Button variant="subtle" size="sm">
@@ -72,9 +66,6 @@ export default function Buttons() {
               Destructive
             </Button>
             <Button variant="outline" size="lg">
-              Outline
-            </Button>
-            <Button variant="outline" fullWidth="true" size="lg">
               Outline
             </Button>
             <Button variant="subtle" size="lg">
