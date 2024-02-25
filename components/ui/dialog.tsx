@@ -10,12 +10,13 @@ const Dialog = DialogPrimitive.Root
 
 const DialogTrigger = DialogPrimitive.Trigger
 
-const DialogPortal = ({
-  className,
-  children,
-  ...props
-}: DialogPrimitive.DialogPortalProps) => (
-  <DialogPrimitive.Portal className={cn(className)} {...props}>
+// AI - Extend the DialogPortalProps to include className
+interface ExtendedDialogPortalProps extends DialogPrimitive.DialogPortalProps {
+  className?: string;
+}
+
+const DialogPortal = ({ children, ...props }: DialogPrimitive.DialogPortalProps) => (
+  <DialogPrimitive.Portal {...props}>
     <div className="fixed inset-0 z-50 flex items-start justify-center sm:items-center">
       {children}
     </div>
@@ -47,7 +48,7 @@ const DialogContent = React.forwardRef<
     <DialogPrimitive.Content
       ref={ref}
       className={cn(
-        "fixed right-0 z-50 grid w-full h-full scale-100 gap-4 bg-white p-6 opacity-100 animate-in fade-in-90 slide-in-from-right-10 sm:max-w-xs sm:rounded-lg xsm:zoom-in-90 sm:slide-in-from-bottom-0",
+        "xsm:zoom-in-90 fixed right-0 z-50 grid h-full w-full scale-100 gap-4 bg-white p-6 opacity-100 animate-in fade-in-90 slide-in-from-right-10 sm:max-w-xs sm:rounded-lg sm:slide-in-from-bottom-0",
         "dark:bg-slate-900",
         className
       )}
